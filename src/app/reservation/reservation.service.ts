@@ -20,8 +20,8 @@ export class ReservationService {
     return this.http.get<Reservation[]>(this.apiUrl);
   }
 
-  getReservation(id: string): Reservation | undefined {
-    return this.reservations.find(res => res.id === id);
+  getReservation(id: string): Observable<Reservation> {
+    return this.http.get<Reservation>(this.apiUrl + "/" + id);
   }
 
   addReservation(reservation: Reservation): void {
